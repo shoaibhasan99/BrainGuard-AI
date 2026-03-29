@@ -1,0 +1,21 @@
+{
+    "python.defaultInterpreterPath": "python",
+    "python.terminal.activateEnvironment": true,
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "typescript": "typescriptreact"
+    },
+    "files.associations": {
+        "*.tsx": "typescriptreact",
+        "*.ts": "typescript"
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "args": ["-NoExit", "-Command", "cd ${workspaceFolder}"]
+        }
+    },
+    "git.ignoreLimitWarning": true
+}

@@ -1,0 +1,60 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Backend",
+            "type": "shell",
+            "command": "python",
+            "args": ["run.py"],
+            "options": {
+                "cwd": "${workspaceFolder}/backend"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Start Frontend",
+            "type": "shell",
+            "command": "npm",
+            "args": ["run", "dev"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Start Both (Backend + Frontend)",
+            "dependsOrder": "parallel",
+            "dependsOn": [
+                "Start Backend",
+                "Start Frontend"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        }
+    ]
+}

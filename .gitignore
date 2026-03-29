@@ -1,0 +1,12 @@
+venv/
+test_tf215_new/
+
+__pycache__/
+*.pyc
+
+*.h5
+*.pt
+*.pth
+
+models/
+backend/models/

@@ -1,0 +1,397 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  body {
+    @apply bg-gray-900 text-white;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+  }
+  
+  #root {
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+  }
+
+  /* Custom Scrollbar Styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: rgba(31, 41, 55, 0.5);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.8);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 114, 128, 0.9);
+  }
+
+  /* Hide Scrollbar */
+  .scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* Custom Date Input Styles for Dark Theme */
+  input[type="date"] {
+    color-scheme: dark;
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit-text {
+    color: white;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit-month-field {
+    color: white;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit-day-field {
+    color: white;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    color: white;
+    width: 4ch !important;
+    max-width: 4ch !important;
+  }
+  
+  /* Ensure year field only shows 4 digits */
+  input[type="date"]::-webkit-datetime-edit-year-field::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  /* Force 4-digit year display */
+  input[type="date"] {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Additional constraints for year field */
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    min-width: 4ch;
+    max-width: 4ch;
+    text-align: center;
+  }
+  
+  /* Ensure proper spacing */
+  input[type="date"]::-webkit-datetime-edit {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Advanced Glassmorphism Effects */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .glass-morphism-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  /* Neumorphism Effects */
+  .neumorphism {
+    background: #1a1a1a;
+    box-shadow: 
+      20px 20px 60px #0d0d0d,
+      -20px -20px 60px #272727;
+  }
+
+  .neumorphism-inset {
+    background: #1a1a1a;
+    box-shadow: 
+      inset 20px 20px 60px #0d0d0d,
+      inset -20px -20px 60px #272727;
+  }
+
+  /* Advanced Gradient Backgrounds */
+  .gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  .gradient-conic {
+    background: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+  }
+
+  .gradient-mesh {
+    background: 
+      radial-gradient(at 40% 20%, hsla(228,100%,74%,1) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
+  }
+
+  /* Advanced Animation Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.8);
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes hologram {
+    0%, 100% { 
+      opacity: 0.8;
+      transform: translateY(0px) rotateX(0deg);
+    }
+    50% { 
+      opacity: 1;
+      transform: translateY(-10px) rotateX(5deg);
+    }
+  }
+
+  @keyframes energy-flow {
+    0% { 
+      transform: translateX(-100%) scaleX(0);
+      opacity: 0;
+    }
+    50% { 
+      opacity: 1;
+    }
+    100% { 
+      transform: translateX(100%) scaleX(1);
+      opacity: 0;
+    }
+  }
+
+  @keyframes neural-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% { 
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+
+  @keyframes quantum-spin {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(1); }
+    75% { transform: rotate(270deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  @keyframes data-stream {
+    0% { 
+      transform: translateY(-100%) rotate(0deg);
+      opacity: 0;
+    }
+    50% { 
+      opacity: 1;
+    }
+    100% { 
+      transform: translateY(100%) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Advanced Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-hologram {
+    animation: hologram 3s ease-in-out infinite;
+  }
+
+  .animate-energy-flow {
+    animation: energy-flow 3s ease-in-out infinite;
+  }
+
+  .animate-neural-pulse {
+    animation: neural-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-quantum-spin {
+    animation: quantum-spin 4s linear infinite;
+  }
+
+  .animate-data-stream {
+    animation: data-stream 4s ease-in-out infinite;
+  }
+
+  /* Advanced Text Effects */
+  .text-glow {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 40px currentColor;
+  }
+
+  .text-holographic {
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .text-neon {
+    color: #00ffff;
+    text-shadow: 
+      0 0 5px #00ffff,
+      0 0 10px #00ffff,
+      0 0 15px #00ffff,
+      0 0 20px #00ffff;
+  }
+
+  /* Advanced Border Effects */
+  .border-glow {
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #00ffff, #ff00ff) border-box;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .border-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  /* Advanced Shadow Effects */
+  .shadow-holographic {
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.3),
+      0 0 40px rgba(255, 0, 255, 0.2),
+      0 0 60px rgba(0, 255, 255, 0.1);
+  }
+
+  .shadow-neural {
+    box-shadow: 
+      0 0 30px rgba(6, 182, 212, 0.4),
+      0 0 60px rgba(6, 182, 212, 0.2),
+      inset 0 0 30px rgba(6, 182, 212, 0.1);
+  }
+
+  /* Advanced Hover Effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
+  }
+
+  /* Advanced Background Patterns */
+  .bg-circuit {
+    background-image: 
+      linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+      linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .bg-neural-network {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(6, 182, 212, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+  }
+
+  /* Advanced Filter Effects */
+  .filter-holographic {
+    filter: 
+      drop-shadow(0 0 10px rgba(0, 255, 255, 0.5))
+      drop-shadow(0 0 20px rgba(255, 0, 255, 0.3));
+  }
+
+  .filter-neural {
+    filter: 
+      drop-shadow(0 0 15px rgba(6, 182, 212, 0.6))
+      brightness(1.1)
+      contrast(1.2);
+  }
+}

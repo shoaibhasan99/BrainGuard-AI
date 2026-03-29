@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Backend",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/run.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/backend"
+        },
+        {
+            "name": "Launch Frontend",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/.bin/vite",
+            "args": ["--port", "3000"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Full App",
+            "configurations": ["Launch Backend", "Launch Frontend"]
+        }
+    ]
+}
