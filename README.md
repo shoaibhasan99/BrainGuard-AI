@@ -3,6 +3,10 @@
 
 A full-stack medical platform with AI-powered brain disease detection, appointment booking, real-time chat, payment processing, and comprehensive patient management system.
 
+## 🎥 Demo Video
+
+[![Watch Demo](https://img.youtube.com/vi/Lp5poZQzjXs/0.jpg)](https://youtu.be/Lp5poZQzjXs)
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
