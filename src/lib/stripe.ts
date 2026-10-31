@@ -15,7 +15,6 @@ export const getStripe = (): Promise<Stripe | null> => {
   return stripePromise;
 };
 
-import { supabase } from './supabase';
 
 // Create payment intent via Supabase Edge Function
 export const createPaymentIntent = async (amount: number, currency: string = 'pkr', metadata?: Record<string, string>) => {

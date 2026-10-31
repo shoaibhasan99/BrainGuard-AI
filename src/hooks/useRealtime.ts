@@ -1,8 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { realtimeService, RealtimeEvent } from '../lib/realtimeService';
-import { notificationService, Notification } from '../lib/notificationService';
+import { notificationService } from '../lib/notificationService';
 import { chatService, Chat, ChatMessage } from '../lib/chatService';
+
+// Rows from the notifications table delivered via realtime events
+type Notification = Record<string, any>;
 
 // Real-time hook for the entire app
 export const useRealtime = () => {

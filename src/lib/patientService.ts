@@ -179,17 +179,21 @@ class PatientService {
         return [];
       }
 
-      return chats.map(chat => ({
-        id: chat.id,
-        patientId: chat.patient_id,
-        patientName: chat.patients?.users?.name || 'Unknown Patient',
-        patientEmail: chat.patients?.users?.email || '',
-        lastMessage: chat.last_message,
-        lastMessageTime: chat.last_message_time,
-        unreadCount: chat.unread_count || 0,
-        isOnline: this.isUserOnline(chat.patients?.users?.updated_at),
-        lastActive: chat.patients?.users?.updated_at || chat.updated_at
-      }));
+      return chats.map(chat => {
+        // Supabase types joined relations as arrays, but this is a many-to-one join
+        const patientUser = (chat.patients as any)?.users;
+        return {
+          id: chat.id,
+          patientId: chat.patient_id,
+          patientName: patientUser?.name || 'Unknown Patient',
+          patientEmail: patientUser?.email || '',
+          lastMessage: chat.last_message,
+          lastMessageTime: chat.last_message_time,
+          unreadCount: chat.unread_count || 0,
+          isOnline: this.isUserOnline(patientUser?.updated_at),
+          lastActive: patientUser?.updated_at || chat.updated_at
+        };
+      });
     } catch (error) {
       console.error('Error fetching patients with chat history:', error);
       return [];
