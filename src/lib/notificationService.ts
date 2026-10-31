@@ -67,7 +67,7 @@ class NotificationService {
     try {
       // Note: Actions are only supported with Service Worker notifications
       // For basic notifications, we'll omit actions and handle clicks instead
-      const notificationOptions: NotificationInit = {
+      const notificationOptions: ConstructorParameters<typeof Notification>[1] = {
         body: options.body,
         tag: options.tag,
         requireInteraction: options.requireInteraction || false,
@@ -243,7 +243,7 @@ class NotificationService {
       return -1;
     }
 
-    const timeoutId = setTimeout(async () => {
+    const timeoutId = window.setTimeout(async () => {
       await this.showNotification(options);
       if (onTrigger) onTrigger();
     }, delay);
@@ -270,7 +270,7 @@ class NotificationService {
       return -1;
     }
 
-    const timeoutId = setTimeout(async () => {
+    const timeoutId = window.setTimeout(async () => {
       // Only show notification here, not in scheduleNotification
       await this.showMedicationReminder(medicationName, dosage, reminderTime.toLocaleTimeString(), onTaken, onSnooze, onSkip);
     }, delay);

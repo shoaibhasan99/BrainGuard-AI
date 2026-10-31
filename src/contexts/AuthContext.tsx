@@ -99,7 +99,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 setUser(fullUser);
               }
             })
-            .catch((dbError) => {
+            .then(undefined, (dbError) => {
               console.error('Error fetching user from database (non-blocking):', dbError);
               // Keep using basic user from auth
             });
@@ -158,7 +158,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                     setUser(fullUser);
                   }
                 })
-                .catch((dbError) => {
+                .then(undefined, (dbError) => {
                   console.error('Error fetching user from database (non-blocking):', dbError);
                   // Keep using basic user from auth
                 });
